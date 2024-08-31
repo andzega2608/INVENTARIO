@@ -3,5 +3,6 @@ El presente proyecto trata sobre un inventario de productos, los cuales, pueden 
 
 Adicional a lo mencionado anteriormente, el programa permitirá agregar productos con sus respectivas características. Del mismo modo, el programa será que capaz de mostrar todo el catálogo de productos que posee la tienda. 
 
-## Selecciona un algoritmo de ordenamiento adecuado al problema
+## SICT0302B: Toma decisiones
+### Selecciona un algoritmo de ordenamiento adecuado al problema
 Para este programa se implementó el algoritmo de ordenamiento de tipo “merge sort”. La elección de este algoritmo de ordenamiento fue por dos razones principales. La primera, es que es un algoritmo muy rápido con un nivel de complejidad de O(n logn) es la mayoría de casos. A diferencia de otros métodos como: “bubble sort”, “insertion sort” o “selection sort”, donde su complejidad es mucho mayor en los peores casos. La otra razón fue porque en la mayoría de casos, la lista de productos siempre se encontrará desordenada, esto debido al incremento de productos que pueden ser añadidos a la tienda. Incluso, los precios, ventas y unidades disponibles de cada producto pueden ir variando dependiendo de la oferta o demando del mismo.   
