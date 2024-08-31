@@ -5,6 +5,25 @@ Adicional a lo mencionado anteriormente, el programa permitirá agregar producto
 
 ## SICT0301B: Evalúa los componentes
 ### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+#### Lista de productos registrados
+En el archivo “inventario.h” se tiene el vector productos, el cual almacena todos los productos registrados. De ese modo para poder ordenar los productos acordes a los precios, ventas y unidades disponibles es importante crear un vector para cada variable. 
+
+Función de obtener_nombres: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener los nombres de todos los productos registrados.  
+
+Función de obtener_precios: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener los precios de todos los productos registrados.  
+
+Función de obtener_ventas: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener la cantidad de ventas a lo largo del mes de todos los productos registrados.  
+
+Función de obtener_nombres: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener la cantidad de unidades disponibles para la venta de todos los productos registrados.  
+
+#### Ordenamiento de productos: 
+En el archivo “sorts.h” se tienen dos métodos de ordenamiento, el primero es el ordenamiento Merge, mientras que el segundo es un método el cual permite ordenar el vector nombres en base al precio, venta o stock. Básicamente, este último método toma los valores del vector ordenado (precio, venta, stock), y los busca en el vector original para obtener el índice, con dicho valor, se dirige al vector original que contiene los nombres de los productos y crea un vector con los nombres ordenados en base al precio, venta o stock. 
+
+Función ordenaMerge: Posee una complejidad de O(n logn), es uno de los algoritmos de ordenamiento más rápidos, ya que en la mayoría de casos presenta dicha complejidad. 
+
+Función ordenaProductos: Posee una complejidad O(n^2), ya que primero deberá recorrer todo el arreglo del vector ordenado y posterior a ello, por cada elemento del vector ordenado, deberá buscar el elemento en todo el arreglo del vector original para poder devolver el índice. 
+
+
 
 ## SICT0302B: Toma decisiones
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
