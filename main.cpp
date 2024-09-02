@@ -1,6 +1,6 @@
 /*
  * Proyecto Inventario de Productos
- * Andrés Ignacio Zegales Taborga
+ * AndrÃ©s Ignacio Zegales Taborga
  * A01711365
  * 31/08/2024
  * Version: 1
@@ -9,7 +9,7 @@
  * distintos productos y los ordena acorde a su precio, del mas caro al mas barato,
  * segun las unidades que se tienen disponible y segun las ventas que se han generado
  * de cada producto en el mes. Adicional a estas funciones, el proyecto es capaz de
- * añadir productos.
+ * aÃ±adir productos.
  */
 
 #include <iostream>
@@ -108,16 +108,19 @@ int main() {
         }
         else if (opcion == 3) {
             Sorts<float> sorts;
+            cout<<"Productos ordenados acorde al precio de manera descendente"<<endl;
             vector<float> pre_ordenado = sorts.ordenaMerge(precios);
             pro_ordenado = sorts.ordenaProductos(pre_ordenado, precios, productos);
             cout<<arrayToString(pro_ordenado, pre_ordenado);
         }
         else if (opcion == 4) {
+            cout<<"Productos ordenados acorde a las ventas de manera descendente"<<endl;
             vector<int> ven_ordenado = sorts.ordenaMerge(ventas);
             pro_ordenado = sorts.ordenaProductos(ven_ordenado, ventas, productos);
             cout<<arrayToString(pro_ordenado, ven_ordenado);
         }
         else if (opcion == 5) {
+            cout<<"Productos ordenados acorde al stock de manera descendente"<<endl;
             vector<int> sto_ordenado = sorts.ordenaMerge(stocks);
             pro_ordenado = sorts.ordenaProductos(sto_ordenado, stocks, productos);
             cout<<arrayToString(pro_ordenado, sto_ordenado);
