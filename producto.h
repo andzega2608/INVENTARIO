@@ -1,6 +1,6 @@
 /*
  * Proyecto Inventario de Productos
- * Andrés Ignacio Zegales Taborga
+ * AndrÃ©s Ignacio Zegales Taborga
  * A01711365
  * 31/08/2024
  * Version: 1
@@ -18,7 +18,7 @@
 #include <sstream>
 using namespace std;
 
-// Declaracion de la clase Vehiculo
+// Declaracion de la clase Producto
 class Producto {
     private: // Variables de instancia
         string nombre;
