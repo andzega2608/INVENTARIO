@@ -4,26 +4,46 @@ El presente proyecto trata sobre un inventario de productos, los cuales, pueden 
 Adicional a lo mencionado anteriormente, el programa permitirá agregar productos con sus respectivas características. Así también como eliminar algún producto como tal. Del mismo modo, el programa será capaz actualizar algunos datos del producto así también como realizar una búsqueda para encontrar un producto en específico.  
 
 ## SICT0301B: Evalúa los componentes
-### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
-#### Lista de productos registrados
-En el archivo “inventario.h” se tiene el vector productos, el cual almacena todos los productos registrados. De ese modo para poder ordenar los productos acordes a los precios, ventas y unidades disponibles es importante crear un vector para cada variable. 
-
-Función de obtener_nombres: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener los nombres de todos los productos registrados.  
-
-Función de obtener_precios: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener los precios de todos los productos registrados.  
-
-Función de obtener_ventas: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener la cantidad de ventas a lo largo del mes de todos los productos registrados.  
-
-Función de obtener_nombres: Posee una complejidad de O(n) esto ya que se debe recorrer todo el arreglo de productos para poder obtener la cantidad de unidades disponibles para la venta de todos los productos registrados.  
-
+### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa
 #### Ordenamiento de productos: 
-En el archivo “sorts.h” se tienen dos métodos de ordenamiento, el primero es el ordenamiento Merge, mientras que el segundo es un método el cual permite ordenar el vector nombres en base al precio, venta o stock. Básicamente, este último método toma los valores del vector ordenado (precio, venta, stock), y los busca en el vector original para obtener el índice, con dicho valor, se dirige al vector original que contiene los nombres de los productos y crea un vector con los nombres ordenados en base al precio, venta o stock. 
+En el archivo “sorts.h” se tienen dos métodos de ordenamiento, el primero es el ordenamiento Merge, mientras que el segundo es un método el cual permite ordenar la lista de nombres de productos en base al precio, venta o stock. Básicamente, este último método toma los valores de la lista ordenada (precio, venta, stock), y los busca en la lista original para obtener el índice, con dicho valor, se dirige a la lista original que contiene los nombres de los productos y crea una nueva con los nombres ordenados en base al precio, venta o stock. 
 
 Función ordenaMerge: Posee una complejidad de O(n logn), es uno de los algoritmos de ordenamiento más rápidos, ya que en la mayoría de casos presenta dicha complejidad. 
 
-Función ordenaProductos: Posee una complejidad O(n^2), ya que primero deberá recorrer todo el arreglo del vector ordenado y posterior a ello, por cada elemento del vector ordenado, deberá buscar el elemento en todo el arreglo del vector original para poder devolver el índice. 
+Función ordenaProductos: Posee una complejidad O(n^2), ya que primero deberá recorrer toda la lista ordenada y posterior a ello, por cada elemento de dicha lista, deberá buscar el elemento en toda la lsita original original para poder devolver el índice. 
 
+### Hace un análisis de complejidad correcto y completo para todas las estructuras de datos y cada uno de sus usos en el programa
+#### Listas doblemente enlazadas
+El archivo "dlist.h" contiene todos los métodos de listas doblemente enlazadas para poder implementar dicha estrcutura de datos en el programa. Desde como añadir un elemento en la propia lista, obtener el tamaño, el valor en una determinada posición dentro la lista y hasta eliminar un valor.  
 
+Función add: Posee una complejidad de O(1), ya que siempre se va añadir un nuevo elemento al final de la lista.
+
+Función search: Posee una complejidad de O(n/2), ya que como se tiene dos apuntadores (head y tail), cada uno de ellos buscará el dato desde el inicio hasta la mitad de la lista en el caso de head y desde el último elemento hasta propia mitad de la lista en el caso del tail.
+
+Función update: Posee una complejidad de O(n/2), ya que al introducir en la función el índice del elemento a que se quiere cambiar su valor, si el índice se encuentra en la primera mitad se usará el apuntador head, caso contrario se usa el apuntador tail.
+
+Función remove: Posee una complejidad de O(n/2), ya que al introducir en la función el índice del elemento a que se quiere eliminar, si el índice se encuentra en la primera mitad se usará el apuntador head, caso contrario se usa el apuntador tail.
+
+Función get: Posee una complejidad O(n/2), ya que al introducir en la función el índice del elemento al cual se quiere obtener su valor, si el índice se encuentra en la primera mitad se usará el apuntador head, caso contrario se usa el apuntador tail. 
+
+#### Listas de productos
+En el archivo “inventario.h” se tiene la lista productos, la cual almacena todos los productos registrados. De ese modo para poder ordenar los productos acordes a los precios, ventas y unidades disponibles es importante crear una nueva lista para cada variable. 
+
+Función agrega_producto: Posee una complejidad de O(1) ya que todo producto nuevo se añade al final de la lista. 
+
+Función obtener_nombres: Posee una complejidad de O(n) esto ya que se debe recorrer toda la lista de productos para poder obtener los nombres de todos los productos registrados.  
+
+Función obtener_precios: Posee una complejidad de O(n) esto ya que se debe recorrer todo la lista de productos para poder obtener los precios de todos los productos registrados.  
+
+Función obtener_ventas: Posee una complejidad de O(n) esto ya que se debe recorrer todo la lista de productos para poder obtener la cantidad de ventas a lo largo del mes de todos los productos registrados.  
+
+Función obtener_nombres: Posee una complejidad de O(n) esto ya que se debe recorrer todo la lista de productos para poder obtener la cantidad de unidades disponibles para la venta de todos los productos registrados.  
+
+Función busqueda: Posee una complejidad O(n/2) porque se realiza la búsqueda a partir de los apuntadores head y tail. 
+
+Función eliminar_product: Posee una complejidad O(n/2+b) esto ya que primero se debe buscar el producto a eliminar, posterior a ello se debe realizar una cantidad de b pasos para poder eliminar dicho producto. 
+
+Función actualizar_datos: Posee una complejidad O(n/2+b) esto ya que primero se debe buscar el producto el cual se quiere cambiar su dato, posterior a ello se debe realizar una cantidad de pasos para poder modificar el valor de dicho producto. 
 
 ## SICT0302B: Toma decisiones
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
