@@ -10,7 +10,7 @@ En el archivo “sorts.h” se tienen dos métodos de ordenamiento, el primero e
 
 Función ordenaMerge: Posee una complejidad de O(n logn), es uno de los algoritmos de ordenamiento más rápidos, ya que en la mayoría de casos presenta dicha complejidad. 
 
-Función ordenaProductos: Posee una complejidad O(n^2), ya que primero deberá recorrer toda la lista ordenada y posterior a ello, por cada elemento de dicha lista, deberá buscar el elemento en toda la lsita original original para poder devolver el índice. 
+Función ordenaProductos: Posee una complejidad O(n^2), ya que primero deberá recorrer toda la lista ordenada y posterior a ello, por cada elemento de dicha lista, deberá buscar el elemento en toda la lista original original para poder devolver el índice. 
 
 ### Hace un análisis de complejidad correcto y completo para todas las estructuras de datos y cada uno de sus usos en el programa
 #### Listas doblemente enlazadas
