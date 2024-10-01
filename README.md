@@ -1,7 +1,7 @@
 # INVENTARIO
 El presente proyecto trata sobre un inventario de productos, los cuales, pueden encontrarse en cualquier supermercado. Tal como se sabe, en dichos comercios, cada producto tiene un precio y las unidades disponibles del mismo. Adicionalmente, cada supermercado debe saber el numero de ventas, con el fin de poder establecer que producto es el más vendido y tener mayor stock. Asimismo, de poder saber si los precios que generan son los adecuados para poder tener mayores ventas. Esto con el fin de poder generar estrategias de mercado. De ese modo, el programa principal se encarga de generar una estructura de clases con el fin de poder comparar el precio, el número de ventas y las unidades disponibles de cada producto y ordenarlos de manera descendente de acuerdo a lo que se requiera. Por ejemplo, mediante el programa se puede tener una lista ordenada de productos acorde al precio, del más caro al más barato.   
 
-Adicional a lo mencionado anteriormente, el programa permitirá agregar productos con sus respectivas características. Del mismo modo, el programa será que capaz de mostrar todo el catálogo de productos que posee la tienda. 
+Adicional a lo mencionado anteriormente, el programa permitirá agregar productos con sus respectivas características. Así también como eliminar algún producto como tal. Del mismo modo, el programa será capaz actualizar algunos datos del producto así también como realizar una búsqueda para encontrar un producto en específico.  
 
 ## SICT0301B: Evalúa los componentes
 ### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
@@ -28,3 +28,16 @@ Función ordenaProductos: Posee una complejidad O(n^2), ya que primero deberá r
 ## SICT0302B: Toma decisiones
 ### Selecciona un algoritmo de ordenamiento adecuado al problema
 Para este programa se implementó el algoritmo de ordenamiento de tipo “merge sort”. La elección de este algoritmo de ordenamiento fue por dos razones principales. La primera, es que es un algoritmo muy rápido con un nivel de complejidad de O(n logn) es la mayoría de casos. A diferencia de otros métodos como: “bubble sort”, “insertion sort” o “selection sort”, donde su complejidad es mucho mayor en los peores casos. La otra razón fue porque en la mayoría de casos, la lista de productos siempre se encontrará desordenada, esto debido al incremento de productos que pueden ser añadidos a la tienda. Incluso, los precios, ventas y unidades disponibles de cada producto pueden ir variando dependiendo de la oferta o demando del mismo. La implementación del algoritmo de ordenamiento “merge sort”, se encuentra en el archivo shorts.h en las líneas 64 a la 140.   
+
+### Selecciona una estructura lineal adecuada para el problema
+Para este programa se decició implementar el manejo de listas doblemente enlazadas. Esto con el fin de poder añadir nuevos productos al final sin preocuparnos por el espacio como en el caso de un array, siendo esta estrcutura mucho más versátil. Asimismo, se implementó esta estructura con el fin de poder acceder a los productos y poder realizar una búesqueda mucho más eficiente acorde a su ubicación dentro de la lista.
+
+## SICT0303B: Implementa acciones científicas
+# Implementa mecanismos para consultar información de las estructuras correctos y útiles dentro de un programa
+El programa permite al usuario realizar distintas consultas de información e incluso modificar algún dato en específico del producto. Por ejemplo en caso de poder ver los productos ordenados acorde a precio/venta/stock se encuentran las opciones 3, 4 y 5. Si se desea eliminar algún producto de la lista, se tiene la opción 
+
+# Implementa mecanismos de lectura de archivos correctos y útiles dentro de un programa
+
+
+# Implementa mecanismos de escritura de archivos correctos y útiles dentro de un programa 
+
