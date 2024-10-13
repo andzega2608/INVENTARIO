@@ -11,19 +11,22 @@
  * de cada producto en el mes. Adicional a estas funciones, el proyecto es capaz de
  * añadir productos, eliminar y cambiar algunos datos de cada producto usando una
  * estrcutura de datos lineal como lo son las listas doblemente enlazadas.
+ * Adicional a ello, el programa usa AVL para poder estructurar la informacion de ventas
+ * y ganancias por dia. Asi tambien mediante esta estrcutura se puede agregar nuevas fechas
+ * y realizar una busqueda de una fecha especifica.
  */
 
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "sorts.h" // Biblioteca con los métodos de ordenamiento
-#include "inventario.h" // Biblioteca con las clases del proyecto
-
+#include "sorts.h"
+#include "inventario.h"
 using namespace std;
 
 int main() {
     Inventario inventario;
     inventario.cargarDatos();
+    inventario.cargarDatosFecha();
     DList<int> ventas = inventario.obtener_ventas();
     DList<float> precios = inventario.obtener_precios();
     DList<int> stocks = inventario.obtener_stocks();
@@ -33,22 +36,24 @@ int main() {
     int opcion;
     while (continua) {
         Sorts<int> sorts;
-        string nombre;
-        int venta, stock;
-        float precio;
         DList<int> aux_ventas = ventas;
         DList<int> aux_stocks = stocks;
         DList<float> aux_precios = precios;
-        cout << "\n1. Mostrar datos" << endl;
+        cout << "BIENVENIDO A SUPERMARKET" << endl;
+        cout << "1. Mostrar datos" << endl;
         cout << "2. Agregar producto." << endl;
-        cout << "3. Mostrar por Precio." << endl;
-        cout << "4. Mostrar por Venta." << endl;
-        cout << "5. Mostrar por Stock." << endl;
+        cout << "3. Mostrar por precio." << endl;
+        cout << "4. Mostrar por venta." << endl;
+        cout << "5. Mostrar por stock." << endl;
         cout << "6. Buscar producto." << endl;
         cout << "7. Eliminar producto." << endl;
-        cout << "8. Cambiar datos de un producto: " << endl;
+        cout << "8. Cambiar datos de un producto. " << endl;
         cout << "9. Resumen de ganancia y ventas." << endl;
-        cout << "10. Salir" << endl;
+        cout << "10. Resumen de ganancia y ventas por dia." << endl;
+        cout << "11. Mostrar dia por ganancia." << endl;
+        cout << "12. Agregar dia." << endl;
+        cout << "13. Buscar por dia" << endl;
+        cout << "14. Salir." << endl;
         cout << "Ingrese una opcion: ";
         cin >> opcion;
         cin.ignore();
@@ -56,7 +61,8 @@ int main() {
         if (opcion == 1) {
             cout << inventario.mostrarDatos(productos, precios, ventas, stocks);
         }
-        else if (opcion == 2) {
+        else if (opcion == 2){
+            string nombre; int venta, stock; float precio;
             cout << "Ingresa los datos correspondientes" << endl;
             cout << "Nombre del producto: "; getline(cin, nombre);
             cout << "Precio: "; cin >> precio;
@@ -69,24 +75,24 @@ int main() {
             stocks.add(stock);
             precios.add(precio);
         }
-        else if (opcion == 3) {
+        else if (opcion == 3){
             Sorts<float> sorts;
             cout << "Productos ordenados acorde al precio de manera descendente" << endl;
             DList<float> pre_ordenado = sorts.ordenaMerge(precios);
             pro_ordenado = sorts.ordenaProductos(pre_ordenado, aux_precios, productos);
-            cout << inventario.DListToString(pro_ordenado, pre_ordenado);
+            cout << inventario.ToString(pro_ordenado, pre_ordenado);
         }
-        else if (opcion == 4) {
+        else if (opcion == 4){
             cout << "Productos ordenados acorde a las ventas de manera descendente" << endl;
             DList<int> ven_ordenado = sorts.ordenaMerge(ventas);
             pro_ordenado = sorts.ordenaProductos(ven_ordenado, aux_ventas, productos);
-            cout << inventario.DListToString(pro_ordenado, ven_ordenado);
+            cout << inventario.ToString(pro_ordenado, ven_ordenado);
         }
-        else if (opcion == 5) {
+        else if (opcion == 5){
             cout << "Productos ordenados acorde al stock de manera descendente" << endl;
             DList<int> sto_ordenado = sorts.ordenaMerge(stocks);
             pro_ordenado = sorts.ordenaProductos(sto_ordenado, aux_stocks, productos);
-            cout << inventario.DListToString(pro_ordenado, sto_ordenado);
+            cout << inventario.ToString(pro_ordenado, sto_ordenado);
         }
         else if (opcion == 6){
             string n_producto;
@@ -157,10 +163,36 @@ int main() {
             cout << "Resumen de ganancia y ventas." << endl;
             cout<< inventario.resumen(precios, ventas);
         }
-        else if (opcion == 10) {
-            inventario.escribir(productos, precios, ventas, stocks);
+        else if (opcion == 10){
+            cout << "Resumen de ganancia y ventas por dia" << endl;
+            cout << inventario.mostrarFecha() << endl;
+        }
+        else if (opcion == 11){
+            cout << "Dias ordenados acorde a la ganancia de manera ascendente" << endl;
+            cout << inventario.mostrarFechaVenta() << endl;
+        }
+        else if (opcion == 12){
+            string fe; int ven; float gan;
+            cout << "Ingresa los datos correspondientes" << endl;
+            cout << "Fecha (DD-MM-AA): "; cin >> fe;
+            cout << "Ventas: "; cin >> ven;
+            cout << "Ganancia: "; cin >> gan;
+            cin.ignore();
+            inventario.agregaFecha(fe, ven, gan);
+        }
+        else if (opcion == 13) {
+            string fech;
+            cout << "Ingresa la fecha a buscar" << endl;
+            cout << "Fecha (DD-MM-AA): "; cin >> fech;
+            cout<< inventario.mostrarPorDia(fech);
+            cout << endl;
+        }
+        else if (opcion == 14) {
+            inventario.escribirDatos(productos, precios, ventas, stocks);
+            inventario.escribirDatosDia();
             cout << "Muchas Gracias." << endl;
             continua = false;
+            productos.clear(); ventas.clear(); stocks.clear(); precios.clear();
         }
         else {
             cout << "Opcion invalida. Elige de nuevo." << endl;
