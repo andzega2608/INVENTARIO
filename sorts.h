@@ -2,7 +2,7 @@
  * Proyecto Inventario de Productos
  * Andrés Ignacio Zegales Taborga
  * A01711365
- * 01/10/2024
+ * 13/10/2024
  * Version: 2
  *
  * El presente programa posee los metodos de ordenamiento para poder
@@ -21,14 +21,14 @@ using namespace std;
 
 template <class T>
 class Sorts {
-private:
-    void swap(DList<T>&, int, int);
-    void copyDList(DList<T>&, DList<T>&, int, int);
-    void mergeDList(DList<T>&, DList<T>&, int, int, int);
-    void mergeSplit(DList<T>&, DList<T>&, int, int);
-public:
-    DList<T> ordenaMerge(const DList<T>&);
-    DList<string> ordenaProductos(DList<T>&, DList<T>&, DList<string>&);
+    private:
+        void swap(DList<T>&, int, int);
+        void copyDList(DList<T>&, DList<T>&, int, int);
+        void mergeDList(DList<T>&, DList<T>&, int, int, int);
+        void mergeSplit(DList<T>&, DList<T>&, int, int);
+    public:
+        DList<T> ordenaMerge(const DList<T>&);
+        DList<string> ordenaProductos(DList<T>&, DList<T>&, DList<string>&);
 };
 
 /*
