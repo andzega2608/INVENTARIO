@@ -6,7 +6,7 @@ Leche, 120, 30, 24.15
 Pan, 180, 25, 19.45
 Huevos, 90, 60, 39.6
 Arroz, 60, 20, 34.8
-Pasta, 250, 40, 29.95
+Pasta, 250, 140, 29.95
 Tomates, 110, 80, 44.25
 Pollo, 75, 15, 119.8
 Pescado, 50, 10, 179.2
@@ -16,12 +16,14 @@ Cebollas, 160, 55, 9.95
 Patatas, 210, 90, 24.1
 Aceite de oliva, 80, 20, 99.65
 Azucar, 220, 100, 14.55
-Sal, 300, 150, 9.4
 Cafe, 95, 35, 79.25
-Te, 100, 40, 58.85
+Te, 120, 40, 58.85
 Galletas, 190, 70, 39.7
 Jugo de naranja, 130, 30, 49.45
 Yogur, 140, 60, 24.9
 Frutos secos, 80, 25, 199.55
 Cereal, 210, 55, 69.15
 Chocolate, 170, 45, 34.9
+Oreo, 96, 78, 12.23
+Nutella, 36, 78, 45.69
+Aguacate, 33, 133, 65.78
