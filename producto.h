@@ -2,7 +2,7 @@
  * Proyecto Inventario de Productos
  * Andrés Ignacio Zegales Taborga
  * A01711365
- * 01/10/2024
+ * 13/10/2024
  * Version: 2
  *
  * Esta clase definida como Producto contiene los atributos como el nombre
@@ -13,19 +13,19 @@
 
 #ifndef PRODUCTO_H
 #define PRODUCTO_H
+
 #include <iostream>
 #include <string>
 #include <sstream>
 using namespace std;
 
-// Declaracion de la clase Producto
 class Producto {
-    private: // Variables de instancia
+    private:
         string nombre;
         int venta;
         int stock;
         float precio;
-    public: // Metodos que tendra el objeto de la clase
+    public:
         Producto();
         Producto(string, int, int, float);
         /*
