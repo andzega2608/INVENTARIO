@@ -3,7 +3,7 @@ El presente proyecto trata sobre un inventario de productos, los cuales, pueden 
 
 Adicional a lo mencionado anteriormente, un comercio también necesita tener registro por día del número de ventas como la ganancia generada por día. De ese modo, el programa también permite al usuario mostrar las ventas y la ganancia por fecha y también muestra los días ordenados acorde a la ganancia de manera ascendente. De esa forma, el propietario puede ver los días donde se ha ganado más y ver si existe una relación directa entre el número de ventas y la ganancia. Asimismo, el programa permite agregar más fechas, así también como buscar un día en específico para obtener las ventas y ganancia de dicha fecha. 
 
-#### NOTA: Al momento de ejecutar el programa, ejecutar desde terminal, puesto que se tiene problemas al ejecutar con distintos compiladores
+#### NOTA: Al momento de ejecutar el programa, ejecutar desde terminal, puesto que se tiene problemas al ejecutar con distintos compiladores.
 
 ## SICT0301B: Evalúa los componentes
 ### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa
