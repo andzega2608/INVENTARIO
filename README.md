@@ -47,6 +47,7 @@ Función buscarFecha: Posee una complejidad de O(log(n)), ya que debe recorrer u
 
 Función max_depth: Posee una complejidad de O(n) ya que debe recorrer cada nodo revisar cual es la profundidad máxima de cada uno. 
 
+### Hace un análisis de complejidad correcto y completo para todos los demás componentes del programa y cada uno de sus usos
 #### Listas de productos
 En el archivo “inventario.h” se tiene la lista productos, la cual almacena todos los productos registrados. De ese modo para poder ordenar los productos acordes a los precios, ventas y unidades disponibles es importante crear una nueva lista para cada variable. Asimismo, el mismo archivo genera un monitoria por fecha de las ganancias y las ventas. 
 
