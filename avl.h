@@ -1,15 +1,16 @@
 /*
  * Proyecto Inventario de Productos
- * AndrÈs Ignacio Zegales Taborga
+ * Andr√©s Ignacio Zegales Taborga
  * A01711365
  * 13/10/2024
  * Version: 2
  *
- * El presente programa posee los metodos para poder trabajar con estructura de
- * datos no lineal como lo son los AVL. De esa forma, este archivo avl.h posee
- * todos los metodos necesarios. Mencionar que se crearan dos AVL, el primero
- * para ordenar los nodos en base a la fecha y el segundo para ordenar los nodos
- * en base a la ganancia del dia
+ * El presente programa posee los metodos para poder trabajar con
+ * estructura de datos no lineal como lo son los AVL. De esa forma,
+ * este archivo avl.h posee todos los metodos necesarios. Mencionar
+ * que se crearan dos AVL, el primero para ordenar los nodos en base
+ * a la fecha y el segundo para ordenar los nodos en base a la
+ * ganancia del dia
  */
 
 #ifndef AVL_H_
@@ -59,18 +60,21 @@ public:
 // Constructor por parametros
 template <class T>
 Node<T>::Node(string di, int ven, float ga)
-    : dia(di), nro_ventas(ven), ganancia(ga), left(nullptr), right(nullptr), level(0), balance(0) {}
+    : dia(di), nro_ventas(ven), ganancia(ga), left(nullptr),
+    right(nullptr), level(0), balance(0) {}
 
 // Constructor por parametros
 template <class T>
-Node<T>::Node(string di, int ven, float ga, Node<T>* le, Node<T>* ri, int lev, int bal)
-    : dia(di), nro_ventas(ven), ganancia(ga), left(le), right(ri), level(lev), balance(bal) {}
+Node<T>::Node(string di, int ven, float ga, Node<T>* le,
+              Node<T>* ri, int lev, int bal)
+    : dia(di), nro_ventas(ven), ganancia(ga), left(le),
+    right(ri), level(lev), balance(bal) {}
 
 /*
 * addVentas(string di, int ven, float ga)
 *
-* Crea una nuevo nodo y lo agrega al arbol que ordena los nodos
-* acorde a la variable de ganancia
+* Crea una nuevo nodo y lo agrega al arbol que ordena
+* los nodos acorde a la variable de ganancia
 *
 * param string di, int ven, float ga
 * @return
@@ -96,8 +100,8 @@ void Node<T>::addVentas(string di, int ven, float ga) {
 /*
 * addFecha(string di, int ven, float ga)
 *
-* Crea una nuevo nodo y lo agrega al arbol que ordena los nodos
-* acorde a la variable de dia
+* Crea una nuevo nodo y lo agrega al arbol que ordena
+* los nodos acorde a la variable de dia
 *
 * param string di, int ven, float ga
 * @return
@@ -123,8 +127,9 @@ void Node<T>::addFecha(string di, int ven, float ga) {
 /*
 * find(float ga)
 *
-* Busca dentro del arbol de gananacia y revisa la ubicacion donde est· ese nodo
-* o deberia estar recordando que en AVL no se puede tener valores repetidos
+* Busca dentro del arbol de gananacia y revisa la ubicacion
+* donde est√° ese nodo o deberia estar recordando que en AVL
+* no se puede tener valores repetidos
 *
 * param float ga
 * return true o false
@@ -144,8 +149,9 @@ bool Node<T>::find(float ga) {
 /*
 * findFecha(string di)
 *
-* Busca dentro del arbol de fecha y revisa la ubicacion donde est· ese nodo
-* o deberia estar recordando que en AVL no se puede tener valores repetidos
+* Busca dentro del arbol de fecha y revisa la ubicacion
+* donde est√° ese nodo o deberia estar recordando que en AVL
+* no se puede tener valores repetidos
 *
 * param string di
 * return true o false
@@ -241,7 +247,8 @@ void Node<T>::inorder(std::stringstream &aux) const {
     if (aux.tellp() != 1) {
         aux << " ";
     }
-    aux << setw(20) << dia << setw(15) << nro_ventas << setw(20) << ganancia << endl;
+    aux << setw(20) << dia << setw(15) << nro_ventas << setw(20)
+    << ganancia << endl;
     if (right != nullptr) {
         right->inorder(aux);
     }
@@ -251,8 +258,8 @@ void Node<T>::inorder(std::stringstream &aux) const {
 * escribirFecha(std::stringstream &aux) const
 *
 * Concatena los valores de cada arbol en orden de manera ascendente
-* en una variable aux de tipo stringstream pero en formato para escribir en
-* el archivo Fechas.csv
+* en una variable aux de tipo stringstream pero en formato
+* para escribir en el archivo Fechas.csv
 *
 * param std::stringstream &aux
 * @return
@@ -273,7 +280,7 @@ void Node<T>::escribirFecha(std::stringstream &aux) const {
 * buscarFecha(std::stringstream &aux, string di) const
 *
 * Busca un dia en el AVL de fechas y en caso que exista, concatena
-* los valores de fecha, ventas y ganancia de ese dÌa
+* los valores de fecha, ventas y ganancia de ese d√≠a
 *
 * param std::stringstream &aux, string di
 * @return
@@ -282,7 +289,8 @@ void Node<T>::escribirFecha(std::stringstream &aux) const {
 template <class T>
 void Node<T>::buscarFecha(std::stringstream &aux, std::string di) const {
     if (di == dia) {
-        aux << setw(20) << dia << setw(20) << nro_ventas << setw(20) << ganancia << endl;
+        aux << setw(20) << dia << setw(20) << nro_ventas << setw(20)
+        << ganancia << endl;
     } else if (di < dia) {
         if (left != nullptr) {
             left->buscarFecha(aux, di);
@@ -322,22 +330,32 @@ int Node<T>::max_depth() {
 /*
 * check_tree(T *check_val, Node<T> *parent, bool *checked)
 *
-* Revisa si el arbol de ganancia no se encuentra denegenerado, si se encuentra, realiza
-* las rotaciones pertienentes para que se encuentre balanceado
+* Revisa si el arbol de ganancia no se encuentra denegenerado,
+* si se encuentra, realiza las rotaciones pertienentes para
+* que se encuentre balanceado
 *
 * param T *check_val, Node<T> *parent, bool *checked
 * return Node<T>*
 */
-
 template <class T>
 Node<T>* Node<T>::check_tree(T *check_val, Node<T> *parent, bool *checked) {
-    int leftDepth = (left != nullptr) ? left->max_depth() : 0;
-    int rightDepth = (right != nullptr) ? right->max_depth() : 0;
-    balance = leftDepth - rightDepth;
-    if (balance > 1 || balance < -1) {
-        *check_val = ganancia;
+    int leftDepth;
+    if (this->left != nullptr) {
+        leftDepth = this->left->max_depth();
+    } else {
+        leftDepth = 0;
+    }
+    int rightDepth;
+    if (this->right != nullptr) {
+        rightDepth = this->right->max_depth();
+    } else {
+        rightDepth = 0;
+    }
+    this->balance = leftDepth - rightDepth;
+    if (this->balance > 1 || this->balance < -1) {
+        *check_val = this->ganancia;
         *checked = true;
-        Node<T>* newRoot = balance_tree();
+        Node<T>* newRoot = this->balance_tree();
         if (parent != nullptr) {
             if (parent->left == this) {
                 parent->left = newRoot;
@@ -347,30 +365,46 @@ Node<T>* Node<T>::check_tree(T *check_val, Node<T> *parent, bool *checked) {
         }
         return newRoot;
     }
-    if (left != nullptr) left->check_tree(check_val, this, checked);
-    if (right != nullptr) right->check_tree(check_val, this, checked);
+    if (this->left != nullptr) {
+        this->left->check_tree(check_val, this, checked);
+    }
+    if (this->right != nullptr) {
+        this->right->check_tree(check_val, this, checked);
+    }
     return this;
 }
 
 /*
 * check_treeFecha(T *check_val, Node<T> *parent, bool *checked)
 *
-* Revisa si el arbol de fechas no se encuentra denegenerado, si se encuentra, realiza
-* las rotaciones pertienentes para que se encuentre balanceado
+* Revisa si el arbol de fechas no se encuentra denegenerado,
+* si se encuentra, realiza las rotaciones pertienentes para
+* que se encuentre balanceado
 *
 * param T *check_val, Node<T> *parent, bool *checked
 * return Node<T>*
 */
 
 template <class T>
-Node<T>* Node<T>::check_treeFecha(T *check_val, Node<T> *parent, bool *checked) {
-    int leftDepth = (left != nullptr) ? left->max_depth() : 0;
-    int rightDepth = (right != nullptr) ? right->max_depth() : 0;
-    balance = leftDepth - rightDepth;
-    if (balance > 1 || balance < -1) {
-        *check_val = dia;
+Node<T>* Node<T>::check_treeFecha(T *check_val,
+                                  Node<T> *parent, bool *checked) {
+    int leftDepth;
+    if (this->left != nullptr) {
+        leftDepth = this->left->max_depth();
+    } else {
+        leftDepth = 0;
+    }
+    int rightDepth;
+    if (this->right != nullptr) {
+        rightDepth = this->right->max_depth();
+    } else {
+        rightDepth = 0;
+    }
+    this->balance = leftDepth - rightDepth;
+    if (this->balance > 1 || this->balance < -1) {
+        *check_val = this->dia;
         *checked = true;
-        Node<T>* newRoot = balance_treeFecha();
+        Node<T>* newRoot = this->balance_treeFecha();
         if (parent != nullptr) {
             if (parent->left == this) {
                 parent->left = newRoot;
@@ -380,17 +414,23 @@ Node<T>* Node<T>::check_treeFecha(T *check_val, Node<T> *parent, bool *checked) 
         }
         return newRoot;
     }
-    if (left != nullptr) left->check_tree(check_val, this, checked);
-    if (right != nullptr) right->check_tree(check_val, this, checked);
+    if (this->left != nullptr) {
+        this->left->check_treeFecha(check_val, this, checked);
+    }
+    if (this->right != nullptr) {
+        this->right->check_treeFecha(check_val, this, checked);
+    }
     return this;
 }
+
 
 /*
 * balance_tree()
 *
-* Cuando el arbol de ganancia se encuentre degenerado, realiza las rotaciones dependiendo
-* si el balance es positivo o negativo, si es positivo, hace una rotaciÛn
-* a la derecha, caso contrario a la izquierda
+* Cuando el arbol de ganancia se encuentre degenerado, realiza
+* las rotaciones dependiendo si el balance es positivo o
+* negativo, si es positivo, hace una rotaci√≥n a la derecha,
+* caso contrario a la izquierda
 *
 * @param
 * return Node<T>*
@@ -422,9 +462,10 @@ Node<T>* Node<T>::balance_tree() {
 /*
 * balance_tree()
 *
-* Cuando el arbol de fechas se encuentre degenerado, realiza las rotaciones dependiendo
-* si el balance es positivo o negativo, si es positivo, hace una rotaciÛn
-* a la derecha, caso contrario a la izquierda
+* Cuando el arbol de fechas se encuentre degenerado, realiza las
+* rotaciones dependiendo si el balance es positivo o negativo,
+* si es positivo, hace una rotaci√≥n a la derecha, caso contrario
+* a la izquierda
 *
 * @param
 * return Node<T>*
@@ -582,7 +623,7 @@ bool AVL<T>::empty() const {
 *
 * Revisa si ya existe un nodo con una ganancia igual, ya que como no
 * puede existir valores repetidos, primero busca si el valor es permitido
-* luego lo aÒade dentro del arbol y hace las rotaciones correspondientes
+* luego lo a√±ade dentro del arbol y hace las rotaciones correspondientes
 * en caso de necesitar
 *
 * param string di, int ven, float ga
@@ -613,7 +654,7 @@ void AVL<T>::addVentas(string di, int ven, float ga) {
 *
 * Revisa si ya existe un nodo con una fecha igual, ya que como no
 * puede existir valores repetidos, primero busca si el valor es permitido
-* luego lo aÒade dentro del arbol y hace las rotaciones correspondientes
+* luego lo a√±ade dentro del arbol y hace las rotaciones correspondientes
 * en caso de necesitar
 *
 * param string di, int ven, float ga
@@ -731,7 +772,7 @@ std::string AVL<T>::escribirFecha() const {
 /*
 * buscarFecha(string di) const
 *
-* Busca una fecha especÌfica, una vez que la encuentra concatena sus datos
+* Busca una fecha espec√≠fica, una vez que la encuentra concatena sus datos
 * en un string. Si no escuentra manda un mensaje de no encontrado
 *
 * param string di
@@ -743,7 +784,8 @@ std::string AVL<T>::buscarFecha(string di) const {
     std::stringstream aux;
     if ((root != nullptr) && (root->findFecha(di))) {
         aux << "Fecha encontrada" << endl;
-        aux << setw(20) << "Fecha" << setw(20) << "Ventas" << setw(20) << "Ganancia" << endl;
+        aux << setw(20) << "Fecha" << setw(20) << "Ventas" << setw(20)
+        << "Ganancia" << endl;
         root->buscarFecha(aux, di);
     } else {
         aux << "Fecha no encontrada" << endl;
