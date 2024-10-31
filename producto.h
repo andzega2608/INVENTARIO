@@ -2,8 +2,8 @@
  * Proyecto Inventario de Productos
  * Andrés Ignacio Zegales Taborga
  * A01711365
- * 13/10/2024
- * Version: 2
+ * 31/10/2024
+ * Version: 3
  *
  * Esta clase definida como Producto contiene los atributos como el nombre
  * precio, venta y stock de cada producto registrado en la tienda. Del mismo
