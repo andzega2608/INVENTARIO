@@ -2,8 +2,8 @@
  * Proyecto Inventario de Productos
  * Andrés Ignacio Zegales Taborga
  * A01711365
- * 13/10/2024
- * Version: 2
+ * 31/10/2024
+ * Version: 3
  *
  * Esta clase definida como Inventario contiene todas las operaciones
  * para agregar productos, asi tambien sirve para obtener listas doblemente
@@ -38,15 +38,19 @@ class Inventario {
         DList<int> obtener_ventas();
         DList<int> obtener_stocks();
         DList<float> obtener_precios();
-        string mostrarDatos(DList<string> &, DList<float> &, DList<int> &, DList<int> &);
+        string mostrarDatos(DList<string> &, DList<float> &,
+        DList<int> &, DList<int> &);
         template <class T>
         string ToString(DList<string> &product, DList<T> &tipo);
-        string busqueda(DList<string> &, DList<float> &, DList<int> &, DList<int> &, string);
-        void eliminar_product(DList<string> &, DList<float> &, DList<int> &, DList<int> &, string);
+        string busqueda(DList<string> &, DList<float> &, DList<int> &,
+        DList<int> &, string);
+        void eliminar_product(DList<string> &, DList<float> &,
+        DList<int> &, DList<int> &, string);
         template <class T>
         void actualizar_datos(DList<string> &, DList<T> &, string, T);
         string resumen(DList<float> &, DList<int> &);
-        void escribirDatos(DList<string> &, DList<float> &, DList<int> &, DList<int> &);
+        void escribirDatos(DList<string> &, DList<float> &,
+        DList<int> &, DList<int> &);
         // Metodos para el archivo Fechas.csv
         void cargarDatosFecha();
         void agregaFecha(string, int, float);
@@ -98,14 +102,16 @@ void Inventario::cargarDatos() {
 * @return
 */
 
-void Inventario::agrega_producto(string producto, int venta, int stock, float precio) {
+void Inventario::agrega_producto(string producto, int venta,
+int stock, float precio) {
     productos.add(Producto(producto, venta, stock, precio));
 }
 
 /*
 * obtener_nombres()
 *
-* Este metodo se encarga de crear una lista con los nombres de los productos registrados
+* Este metodo se encarga de crear una lista con los nombres de
+* los productos registrados
 *
 * @return DList<string> de nombres productos registrados
 */
@@ -178,21 +184,25 @@ DList<float> Inventario::obtener_precios() {
 }
 
 /*
-* mostrarDatos(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks)
+* mostrarDatos(DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks)
 *
-* Se encarga de mostrar de forma estética los productos que se tienen registrados
+* Se encarga de mostrar de forma estética los productos que se tienen
+* registrados
 *
-* param DList<string> &product, DList<float> &pre, DList<T> &vent, DList<T> &stks
+* param DList<string> &product, DList<float> &pre, DList<T> &vent,
+  DList<T> &stks
 * @return string con los productos y sus datos
 */
 
-string Inventario::mostrarDatos(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks) {
+string Inventario::mostrarDatos(DList<string> &product, DList<float> &pre,
+DList<int> &vent, DList<int> &stks) {
     stringstream aux;
-    aux << setw(20) << "Producto" << setw(10) << "Precio" << setw(10) << "Ventas"
-    << setw(10) << "Stocks" << endl;
+    aux << setw(20) << "Producto" << setw(10) << "Precio"
+    << setw(10) << "Ventas" << setw(10) << "Stocks" << endl;
     for (int i = 0; i < product.getSize(); i++) {
-        aux << setw(20) << product.get(i) << setw(10) << pre.get(i) << setw(10)
-        << vent.get(i) << setw(10) <<
+        aux << setw(20) << product.get(i) << setw(10)
+        << pre.get(i) << setw(10) << vent.get(i) << setw(10) <<
         stks.get(i) << endl;
     }
     aux << endl;
@@ -202,8 +212,8 @@ string Inventario::mostrarDatos(DList<string> &product, DList<float> &pre, DList
 /*
 * ToString(DList<string> &product, DList<T> &tipo)
 *
-* Se encarga de mostrar de forma estética los productos con su precio/venta/stock depende
-* de lo que quiera el usuario
+* Se encarga de mostrar de forma estética los productos con su
+* precio/venta/stock depende de lo que quiera el usuario
 *
 * param DList<string> &product, DList<T> &tipo
 * @return string con los productos y precio/venta/stock
@@ -213,32 +223,37 @@ template <class T>
 string Inventario::ToString(DList<string> &product, DList<T> &tipo) {
     stringstream aux;
     for (int i = 0; i < product.getSize(); i++) {
-        aux << setw(20) << product.get(i) << setw(10) << tipo.get(i) << endl;
+        aux << setw(20) << product.get(i) << setw(10)
+        << tipo.get(i) << endl;
     }
     aux << endl;
     return aux.str();
 }
 
 /*
-* busqueda(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto)
+* busqueda(DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks, string n_producto)
 *
 * Realiza una busqueda con el metodo search del archivo dlist.h
 * devolviendo el indice del producto. Si el producto se encuentra
 * en la DList, se muestra todos los datos del producto, caso contario
 * muestra producto no encontrado.
 *
-* param DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto
+* param DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks, string n_producto
 * @return string con datos del producto
 */
 
-string Inventario::busqueda(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto){
+string Inventario::busqueda(DList<string> &product, DList<float> &pre,
+    DList<int> &vent, DList<int> &stks, string n_producto){
     stringstream aux;
     int i = product.search(n_producto);
     if (i != -1){
         aux << "Producto encontrado: " << endl;
         aux << setw(20) << "Producto" << setw(10) << "Precio" << setw(10)
         << "Ventas" << setw(10) << "Stocks" << endl;
-        aux << setw(20) << product.get(i) << setw(10) << pre.get(i) << setw(10)
+        aux << setw(20) << product.get(i) << setw(10)
+        << pre.get(i) << setw(10)
         << vent.get(i) << setw(10) << stks.get(i) << endl;
     }
     else {
@@ -249,18 +264,21 @@ string Inventario::busqueda(DList<string> &product, DList<float> &pre, DList<int
 }
 
 /*
-* eliminar_product(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto)
+* eliminar_product(DList<string> &product, DList<float> &pre,
+  DList<int> &vent, DList<int> &stks, string n_producto)
 *
 * Realiza una busqueda con el metodo search del archivo dlist.h
-* devolviendo el indice del producto. Si el producto se encuentra en la DList,
-* elimina todos los datos del producto con el metodo remove del mismo archivo
-* dlist.h.
+* devolviendo el indice del producto. Si el producto se encuentra
+* en la DList, elimina todos los datos del producto con el metodo
+* remove del mismo archivo dlist.h.
 *
-* param DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto
+* param DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks, string n_producto
 * @return
 */
 
-void Inventario::eliminar_product(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto){
+void Inventario::eliminar_product(DList<string> &product, DList<float> &pre,
+DList<int> &vent, DList<int> &stks, string n_producto){
     int index = product.search(n_producto);
     product.remove(index);
     pre.remove(index);
@@ -269,17 +287,20 @@ void Inventario::eliminar_product(DList<string> &product, DList<float> &pre, DLi
 }
 
 /*
-* actualizar_datos(DList<string> &product, DList<T> &tipo, string n_producto, T val)
+* actualizar_datos(DList<string> &product, DList<T> &tipo,
+  string n_producto, T val)
 *
 * Cambia un dato de un producto en especifico (precio/venta/stock),
 * para ello utiliza las funciones seach y update del archivo dlist.h.
 *
-* param DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks, string n_producto
+* param DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks, string n_producto
 * @return
 */
 
 template <class T>
-void Inventario::actualizar_datos(DList<string> &product, DList<T> &tipo, string n_producto, T val){
+void Inventario::actualizar_datos(DList<string> &product,
+DList<T> &tipo, string n_producto, T val){
     int index = product.search(n_producto);
     tipo.update(index, val);
 }
@@ -308,21 +329,25 @@ string Inventario::resumen(DList<float> &pre, DList<int> &vent){
 }
 
 /*
-* escribir(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks)
+* escribir(DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks)
 *
 * Escribe los datos actualizados en el archivo "Temp.csv". Posterior a ello,
 * elimina el archivo "Inventario.csv" y "Temp.csv" lo renombra de la misma
 * manera, es decir, con el nombre de "Inventario.csv".
 *
-* param DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks
+* param DList<string> &product, DList<float> &pre, DList<int> &vent,
+  DList<int> &stks
 * @return
 */
 
-void Inventario::escribirDatos(DList<string> &product, DList<float> &pre, DList<int> &vent, DList<int> &stks){
+void Inventario::escribirDatos(DList<string> &product, DList<float> &pre,
+DList<int> &vent, DList<int> &stks){
     stringstream aux;
     aux<<"Productos, Ventas, Stocks, Precios"<<endl;
     for (int i = 0; i < product.getSize(); i++) {
-        aux << product.get(i) << ", " << vent.get(i) << ", " << stks.get(i) << ", " << pre.get(i) << endl;
+        aux << product.get(i) << ", " << vent.get(i) << ", "
+        << stks.get(i) << ", " << pre.get(i) << endl;
     }
     ofstream archivo;
     archivo.open("Temp.csv", ios::out);
@@ -389,7 +414,8 @@ void Inventario::agregaFecha(string fecha, int nro_venta, float ganancia) {
 
 string Inventario::mostrarFecha() {
     stringstream aux;
-    aux << setw(20) << "Fecha" << setw(20) << "Nro. Ventas" << setw(20) << "Ganancia MXN" << endl;
+    aux << setw(20) << "Fecha" << setw(20) << "Nro. Ventas"
+    << setw(20) << "Ganancia MXN" << endl;
     aux << fechas.inorder();
     aux << endl;
     return aux.str();
@@ -406,7 +432,8 @@ string Inventario::mostrarFecha() {
 
 string Inventario::mostrarFechaVenta() {
     stringstream aux;
-    aux << setw(20) << "Fecha" << setw(20) << "Nro. Ventas" << setw(20) << "Ganancia MXN" << endl;
+    aux << setw(20) << "Fecha" << setw(20) << "Nro. Ventas" << setw(20)
+    << "Ganancia MXN" << endl;
     aux << fechas_ventas.inorder();
     aux << endl;
     return aux.str();
