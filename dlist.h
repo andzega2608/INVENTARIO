@@ -5,9 +5,10 @@
  * 13/10/2024
  * Version: 2
  *
- * El presente programa posee los metodos para poder trabajar con estructura de
- * datos lineal como lo son las listas doblementes enlazadas. De esa forma, este
- * archivo dlist.h posee todos los metodos necesarios.
+ * El presente programa posee los metodos para poder trabajar con
+ * estructura de datos lineal como lo son las listas doblementes
+ * enlazadas. De esa forma, este archivo dlist.h posee todos los
+ * metodos necesarios.
  */
 
 #ifndef DLIST_H_
@@ -27,8 +28,8 @@ class DLink {
         T value;
         DLink<T>* previous;
         DLink<T>* next;
-        /*Se declaran clases amigas para que se puedan acceder a los atributos
-        y metodos privados de la clase DLink*/
+        /*Se declaran clases amigas para que se puedan acceder
+        a los atributos y metodos privados de la clase DLink*/
         friend class DList<T>;
         friend class Inventario;
     public:
@@ -43,11 +44,13 @@ DLink<T>::DLink(T val) : value(val), previous(0), next(0) {}
 
 // Constructor por parametros
 template <class T>
-DLink<T>::DLink(T val, DLink* prev, DLink* nxt) : value(val), previous(prev), next(nxt) {}
+DLink<T>::DLink(T val, DLink* prev, DLink* nxt) : value(val),
+previous(prev), next(nxt) {}
 
 // Constructor por copia
 template <class T>
-DLink<T>::DLink(const DLink<T>& source) : value(source.value), previous(source.previous), next(source.next) {}
+DLink<T>::DLink(const DLink<T>& source) : value(source.value),
+previous(source.previous), next(source.next) {}
 
 template <class T>
 class DList {
