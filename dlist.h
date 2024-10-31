@@ -2,8 +2,8 @@
  * Proyecto Inventario de Productos
  * Andrés Ignacio Zegales Taborga
  * A01711365
- * 13/10/2024
- * Version: 2
+ * 31/10/2024
+ * Version: 3
  *
  * El presente programa posee los metodos para poder trabajar con
  * estructura de datos lineal como lo son las listas doblementes
