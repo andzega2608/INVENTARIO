@@ -2,8 +2,8 @@
  * Proyecto Inventario de Productos
  * Andrés Ignacio Zegales Taborga
  * A01711365
- * 13/10/2024
- * Version: 2
+ * 31/10/2024
+ * Version: 3
  *
  * El presente programa posee los metodos de ordenamiento para poder
  * ordenar los productos en base a su precio, venta o disponibilidad.
@@ -74,7 +74,8 @@ void Sorts<T>::copyDList(DList<T> &A, DList<T> &B, int low, int high) {
 */
 
 template <class T>
-void Sorts<T>::mergeDList(DList<T> &A, DList<T> &B, int low, int mid, int high) {
+void Sorts<T>::mergeDList(DList<T> &A, DList<T> &B, int low,
+int mid, int high) {
     int i = low, j = mid + 1, k = low;
     while (i <= mid && j <= high) {
         if (A.get(i) > A.get(j)) {
@@ -135,19 +136,22 @@ DList<T> Sorts<T>::ordenaMerge(const DList<T>& original) {
 }
 
 /*
-* ordenaProductos(DList<T> &tipo_ordenado, DList<T> &tipo, DList<string> &producto)
+* ordenaProductos(DList<T> &tipo_ordenado, DList<T> &tipo,
+* DList<string> &producto)
 *
-* Ordena la DList de los nombres de los productos en base al DList de precios/ventas/stocks
-* previamente ordenado, basicamente, toma la DList ordenado y el original, con el fin
-* de poder hallar el indice de ese producto y mediante este valor poder ordenar el DList
-* de nombres en base a precio/ventas/stocks
+* Ordena la DList de los nombres de los productos en base al DList de
+* precios/ventas/stocks previamente ordenado, basicamente, toma la DList
+* ordenado y el original, con el fin de poder hallar el indice de ese
+* producto y mediante este valor poder ordenar el DList de nombres en
+* base a precio/ventas/stocks
 *
 * @param DList<T> &tipo_ordenado, DList<T> &tipo, DList<string> &producto
 * return DList de nombres ordenado acorde a precio/venta/stock
 */
 
 template <class T>
-DList<string> Sorts<T>::ordenaProductos(DList<T> &tipo_ordenado, DList<T> &tipo, DList<string> &producto) {
+DList<string> Sorts<T>::ordenaProductos(DList<T> &tipo_ordenado,
+DList<T> &tipo, DList<string> &producto) {
     DList<string> pro_ordenado;
     for (int i = 0; i < tipo_ordenado.getSize(); i++) {
         for (int j = 0; j < tipo_ordenado.getSize(); j++) {
