@@ -22,9 +22,56 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <limits>
 #include "sorts.h"
 #include "inventario.h"
 using namespace std;
+/*
+* verificar_int()
+*
+* Funcion que verifica que los valores sean numeros
+*
+* @param
+* @return
+*/
+int verificar_int() {
+    int valor;
+    bool continua = true;
+    while (continua == true) {
+        cin >> valor;
+        if (cin.fail()) {
+            cout << "Por favor ingrese un numero entero: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        } else {
+            continua = false;
+        }
+    }
+    return valor;
+}
+/*
+* verificar_float()
+*
+* Funcion que verifica que los valores sean numeros
+*
+* @param
+* @return
+*/
+float verificar_float() {
+    float valor;
+    bool continua = true;
+    while (continua == true) {
+        cin >> valor;
+        if (cin.fail()) {
+            cout << "Por favor ingrese un numero: ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        } else {
+            continua = false;
+        }
+    }
+    return valor;
+}
 
 int main() {
     Inventario inventario;
@@ -58,7 +105,7 @@ int main() {
         cout << "13. Buscar por dia" << endl;
         cout << "14. Salir." << endl;
         cout << "Ingrese una opcion: ";
-        cin >> opcion;
+        opcion = verificar_int();
         cin.ignore();
         system("cls");
         if (opcion == 1) {
@@ -69,9 +116,9 @@ int main() {
             string nombre; int venta, stock; float precio;
             cout << "Ingresa los datos correspondientes" << endl;
             cout << "Nombre del producto: "; getline(cin, nombre);
-            cout << "Precio: "; cin >> precio;
-            cout << "Stock: "; cin >> stock;
-            cout << "Venta: "; cin >> venta;
+            cout << "Precio: "; precio = verificar_float();
+            cout << "Stock: "; stock = verificar_int();
+            cout << "Venta: "; venta = verificar_int();
             cin.ignore();
             inventario.agrega_producto(nombre, venta, stock, precio);
             productos.add(nombre);
@@ -118,7 +165,8 @@ int main() {
             if (n_pro != -1){
                 cout << "Se eliminara el producto "
                 << productos.get(n_pro) << endl;
-                cout << "Ingrese 1 si es correcto: "; cin>>opcion2;
+                cout << "Ingrese 1 si es correcto: ";
+                opcion2 = verificar_int();
                 if (opcion2 == 1){
                     inventario.eliminar_product(productos, precios,
                     ventas, stocks, e_producto);
@@ -144,17 +192,20 @@ int main() {
                 cout << "2. Actualizar stock." << endl;
                 cout << "3. Actualizar venta." << endl;
                 cout << "4. Salir." << endl;
-                cout << "Ingrese una opcion: "; cin>>opcion3;
+                cout << "Ingrese una opcion: ";
+                opcion3 = verificar_int();
                 if (opcion3 == 1){
                     float precio2;
-                    cout << "Ingrese el nuevo precio: "; cin>>precio2;
+                    cout << "Ingrese el nuevo precio: ";
+                    precio2 = verificar_float();
                     inventario.actualizar_datos(productos, precios,
                     n_pro2, precio2);
                     cout << "Precio actualizado" << endl;
                 }
                 else if (opcion3 == 2){
                     int stock2;
-                    cout << "Ingrese el nuevo stock: "; cin>>stock2;
+                    cout << "Ingrese el nuevo stock: ";
+                    stock2 = verificar_int();
                     inventario.actualizar_datos(productos, stocks,
                     n_pro2, stock2);
                     cout << "Stock actualizado" << endl;
@@ -162,7 +213,7 @@ int main() {
                 else if (opcion3 == 3){
                     int venta2;
                     cout << "Ingrese el nuevo numero de ventas: ";
-                    cin>>venta2;
+                    venta2 = verificar_int();
                     inventario.actualizar_datos(productos, ventas,
                     n_pro2, venta2);
                     cout << "Numero de ventas actualizado" << endl;
@@ -194,8 +245,8 @@ int main() {
             string fe; int ven; float gan;
             cout << "Ingresa los datos correspondientes" << endl;
             cout << "Fecha (DD-MM-AA): "; cin >> fe;
-            cout << "Ventas: "; cin >> ven;
-            cout << "Ganancia: "; cin >> gan;
+            cout << "Ventas: "; ven = verificar_int();
+            cout << "Ganancia: "; gan = verificar_float();
             cin.ignore();
             inventario.agregaFecha(fe, ven, gan);
         }
